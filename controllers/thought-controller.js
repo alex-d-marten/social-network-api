@@ -3,6 +3,13 @@ const { Thought, User } = require('../models');
 const thoughtController = {
     addThought({ params, body }, res) {
         Thought.create(body)
+            .then(dbThoughtData => {
+                return Thought.findOneAndUpdate(
+                    { _id: dbThoughtData._id },
+                    { $push: { userId: params.userId } },
+                    { new: true }
+                );
+            })
             .then(({ _id }) => {
                 return User.findOneAndUpdate(
                     { _id: params.userId },

@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { Thought, User } = require('../models');
 
 const userController = {
     getAllUsers(req, res) {
@@ -51,6 +51,9 @@ const userController = {
     },
     deleteUser({ params }, res) {
         User.findOneAndDelete({ _id: params.id })
+            .then(() => {
+                return Thought.deleteMany({ userId: params.id });
+            })
             .then(dbUserData => {
                 if(!dbUserData) {
                     res.status(404).json({ message: 'User not found with this id!'});
