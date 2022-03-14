@@ -51,7 +51,7 @@ const thoughtController = {
             });
     },
     updateThought({ params, body }, res) {
-        Thought.findOneAndDelete({ _id: params.thoughtId }, body, { new: true, runValidators: true })
+        Thought.findOneAndUpdate({ _id: params.thoughtId }, body, { new: true, runValidators: true })
         .then(dbThoughtData => {
             if(!dbThoughtData) {
                 res.status(404).json({ message: 'Thought not found with this id!' });
