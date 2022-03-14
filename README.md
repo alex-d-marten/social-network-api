@@ -12,4 +12,4 @@ Run "npm init -y" and "npm install" to install the necessary packages.
 To start the server run "node server".
 
 ## Demo
-[Walkthrough Video]()
+[Walkthrough Video](https://drive.google.com/file/d/1zY91Ce5hd90nzNtC2iqdcVCCiTYUgvHn/view?usp=sharing)
